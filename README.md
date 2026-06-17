@@ -1,5 +1,5 @@
 
-Tools in Ruby to controle Debian systems and Ollama .
+Tools in Ruby to control Debian systems and Ollama .
 ---
 
 # OllaOS 
