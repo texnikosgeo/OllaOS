@@ -33,4 +33,4 @@ start testing.
 ---
 
 # Requirements  
-Debian System, fastfetch, geany, ollama, ddgr,wget and adding !
+Debian System, ruby, fastfetch, geany, ollama, ddgr,wget and adding !
