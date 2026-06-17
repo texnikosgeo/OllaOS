@@ -1,0 +1,17 @@
+this is a demo experiment to create a minimal Debian spin called OllaOS 
+using MiniOS standard from https://minios.dev/ as a base system 
+and Ollama. OllaOS will be used for testing purposes and experiments 
+with AI, ML and other technologies.
+Ruby is used heavily in this project.
+
+files :
+001. df.rb              show system space usage
+002. fastfetch.rb       show system info
+003. geany.rb           starts Geany Editor
+004. ls.rb              show directory content
+005. pwd.rb             show current working directory
+006. top.rb             show system processes
+007. up_deb.rb          update & upgrade Debian System
+008. web_search.rb      makes a web search and shows the results
+009. wget.rb            download file from internet
+010. ol_list.rb         list all Ollama available models
