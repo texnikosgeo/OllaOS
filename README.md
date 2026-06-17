@@ -23,6 +23,7 @@ for local LLM inference and provides extensive tooling via Ruby scripts.
 - Custom scripting and automation  
 
 ---
+
 ## Instaletion
 
 clone the repo.
@@ -30,3 +31,6 @@ cd in.
 start testing.
 
 ---
+
+# Requirements  
+Debian System, fastfetch, geany, ollama, ddgr,wget and adding !
