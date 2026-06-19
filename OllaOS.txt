@@ -1,17 +1,133 @@
-this is a demo experiment to create a minimal Debian spin called OllaOS 
+This is a demo experiment to create a minimal Debian spin called OllaOS 
 using MiniOS standard from https://minios.dev/ as a base system 
 and Ollama. OllaOS will be used for testing purposes and experiments 
 with AI, ML and other technologies.
 Ruby is used heavily in this project.
 
 files :
-001. df.rb              show system space usage
-002. fastfetch.rb       show system info
-003. geany.rb           starts Geany Editor
-004. ls.rb              show directory content
-005. pwd.rb             show current working directory
-006. top.rb             show system processes
-007. up_deb.rb          update & upgrade Debian System
-008. web_search.rb      makes a web search and shows the results
-009. wget.rb            download file from internet
-010. ol_list.rb         list all Ollama available models
+
+df.rb              show system space usage
+#!/usr/bin/env ruby
+# requirement df app for linux
+# this app runs Linux command: df -h and returns the output
+# this app is part of OllaOS System
+command = "df -h"
+puts system(command)
+puts "Press Ender to continue..."
+continue = gets.chomp
+
+fastfetch.rb       show system info
+#!/usr/bin/env ruby
+# requirement fastfetch app for linux
+# this app runs Linux command: fastfetch and returns the output
+# this app is part of OllaOS System
+command = `fastfetch`
+puts command
+puts "Press Ender to continue..."
+continue = gets.chomp
+
+geany.rb           starts Geany Editor
+#!/usr/bin/env ruby
+# requirement geany editor app for linux
+# this app runs Linux command: geany and returns the output
+# this app is part of OllaOS System
+command = "geany"
+puts system(command)
+puts "Press Ender to continue..."
+continue = gets.chomp
+
+ls.rb              show directory content
+#!/usr/bin/env ruby
+# this app runs Linux command: ls -la and returns the output
+# this app is part of OllaOS System
+command = `ls -la`
+puts command
+puts "Press Ender to continue..."
+continue = gets.chomp
+
+ol_list.rb         list all Ollama available models
+#!/usr/bin/env ruby
+# requirement ollama app for linux
+# this app runs Linux command: ollama list and returns the output
+# this app is part of OllaOS System
+command = "ollama list"
+puts system(command)
+puts "Press Ender to continue..."
+continue = gets.chomp
+
+ol_pull.rb	pull Ollama model
+#!/usr/bin/env ruby
+# requirement ollama app for linux
+# this app runs Linux command: ollama pull and returns the output
+# this app is part of OllaOS System
+puts "type model name :"
+user_answer = gets.chomp
+command = "ollama pull"
+puts system(command + " #{user_answer}")
+puts "Press Ender to continue..."
+continue = gets.chomp
+
+ol_run.rb  	run Ollama model
+#!/usr/bin/env ruby
+# requirement ollama app for linux
+# this app runs Linux command: ollama run and returns the output
+# this app is part of OllaOS System
+puts "type model name :"
+user_answer = gets.chomp
+command = "ollama run"
+puts system(command + " #{user_answer}")
+puts "Press Ender to continue..."
+continue = gets.chomp
+
+pwd.rb             show current working directory
+#!/usr/bin/env ruby
+# this app runs Linux command: pwd and returns the output
+# this app is part of OllaOS System
+command = `pwd`
+puts command
+puts "Press Ender to continue..."
+continue = gets.chomp
+
+top.rb             show system processes
+#!/usr/bin/env ruby
+# requirement top app for linux
+# this app runs Linux command: top and returns the output
+# this app is part of OllaOS System
+command = "top"
+puts system(command)
+puts "Press Ender to continue..."
+continue = gets.chomp
+
+up_deb.rb          update & upgrade Debian System
+#!/usr/bin/env ruby
+# this app runs Linux command: sudo apt update && sudo apt upgrade -y and returns the output
+# this app is part of OllaOS System
+command = `sudo apt update && sudo apt upgrade -y`
+puts command
+puts "Press Ender to continue..."
+continue = gets.chomp
+
+web_search.rb	   Makes a web search with users input
+#!/usr/bin/env ruby
+# requirement ddgr app for linux and internet connection active is needed.
+# this app runs Linux command: ddgr + user input and returns the output
+# this app is part of OllaOS System
+puts "Search for :"
+search_term = gets.chomp
+command = `ddgr --np "#{search_term}" `
+puts command
+puts "Press Ender to continue..."
+continue = gets.chomp
+
+wget.rb            download file from internet
+#!/usr/bin/env ruby
+# requirement ddgr app for linux and internet connection active is needed.
+# this app runs Linux command: ddgr + user input and returns the output
+# this app is part of OllaOS System
+puts "Search for :"
+search_term = gets.chomp
+command = `ddgr --np "#{search_term}" `
+puts command
+puts "Press Ender to continue..."
+continue = gets.chomp
+
