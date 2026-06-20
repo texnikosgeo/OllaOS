@@ -26,10 +26,10 @@ for local LLM inference and provides extensive tooling via Ruby scripts.
 
 ## Instaletion
 
-clone the repo.
-cd in.
-ruby ol_sin.rb
-start testing.
+- clone the repo.
+- cd in.
+- ruby ol_sin.rb
+- start testing.
 
 ---
 
