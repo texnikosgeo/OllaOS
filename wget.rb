@@ -6,5 +6,5 @@ puts "Download Link :"
 search_term = gets.chomp
 command = `wget "#{search_term}" `
 puts command
-puts "Press Ender to continue..."
+puts "Press Enter to continue..."
 continue = gets.chomp
