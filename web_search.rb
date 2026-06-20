@@ -6,5 +6,5 @@ puts "Search for :"
 search_term = gets.chomp
 command = `ddgr --np "#{search_term}" `
 puts command
-puts "Press Ender to continue..."
+puts "Press Enter to continue..."
 continue = gets.chomp
