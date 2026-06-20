@@ -6,5 +6,5 @@ puts "type model name :"
 user_answer = gets.chomp
 command = "ollama run"
 puts system(command + " #{user_answer}")
-puts "Press Ender to continue..."
+puts "Press Enter to continue..."
 continue = gets.chomp
