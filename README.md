@@ -28,6 +28,7 @@ for local LLM inference and provides extensive tooling via Ruby scripts.
 
 clone the repo.
 cd in.
+ruby ol_sin.rb
 start testing.
 
 ---
