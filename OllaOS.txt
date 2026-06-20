@@ -11,9 +11,9 @@ df.rb              show system space usage
 # requirement df app for linux
 # this app runs Linux command: df -h and returns the output
 # this app is part of OllaOS System
-command = "df -h"
-puts system(command)
-puts "Press Ender to continue..."
+command = `df -h`
+puts command
+puts "Press Enter to continue..."
 continue = gets.chomp
 
 fastfetch.rb       show system info
@@ -23,7 +23,7 @@ fastfetch.rb       show system info
 # this app is part of OllaOS System
 command = `fastfetch`
 puts command
-puts "Press Ender to continue..."
+puts "Press Enter to continue..."
 continue = gets.chomp
 
 geany.rb           starts Geany Editor
@@ -31,9 +31,8 @@ geany.rb           starts Geany Editor
 # requirement geany editor app for linux
 # this app runs Linux command: geany and returns the output
 # this app is part of OllaOS System
-command = "geany"
-puts system(command)
-puts "Press Ender to continue..."
+system("geany")
+puts "Press Enter to continue..."
 continue = gets.chomp
 
 ls.rb              show directory content
@@ -42,7 +41,7 @@ ls.rb              show directory content
 # this app is part of OllaOS System
 command = `ls -la`
 puts command
-puts "Press Ender to continue..."
+puts "Press Enter to continue..."
 continue = gets.chomp
 
 ol_list.rb         list all Ollama available models
@@ -50,9 +49,9 @@ ol_list.rb         list all Ollama available models
 # requirement ollama app for linux
 # this app runs Linux command: ollama list and returns the output
 # this app is part of OllaOS System
-command = "ollama list"
-puts system(command)
-puts "Press Ender to continue..."
+command = `ollama list`
+puts command
+puts "Press Enter to continue..."
 continue = gets.chomp
 
 ol_pull.rb	pull Ollama model
@@ -62,9 +61,9 @@ ol_pull.rb	pull Ollama model
 # this app is part of OllaOS System
 puts "type model name :"
 user_answer = gets.chomp
-command = "ollama pull"
-puts system(command + " #{user_answer}")
-puts "Press Ender to continue..."
+command = `ollama pull #{user_answer}`
+puts command
+puts "Press Enter to continue..."
 continue = gets.chomp
 
 ol_run.rb  	run Ollama model
@@ -74,9 +73,8 @@ ol_run.rb  	run Ollama model
 # this app is part of OllaOS System
 puts "type model name :"
 user_answer = gets.chomp
-command = "ollama run"
-puts system(command + " #{user_answer}")
-puts "Press Ender to continue..."
+system("ollama run #{user_answer}")
+puts "Press Enter to continue..."
 continue = gets.chomp
 
 pwd.rb             show current working directory
@@ -85,7 +83,7 @@ pwd.rb             show current working directory
 # this app is part of OllaOS System
 command = `pwd`
 puts command
-puts "Press Ender to continue..."
+puts "Press Enter to continue..."
 continue = gets.chomp
 
 top.rb             show system processes
@@ -93,9 +91,8 @@ top.rb             show system processes
 # requirement top app for linux
 # this app runs Linux command: top and returns the output
 # this app is part of OllaOS System
-command = "top"
-puts system(command)
-puts "Press Ender to continue..."
+system("top")
+puts "Press Enter to continue..."
 continue = gets.chomp
 
 up_deb.rb          update & upgrade Debian System
@@ -104,7 +101,7 @@ up_deb.rb          update & upgrade Debian System
 # this app is part of OllaOS System
 command = `sudo apt update && sudo apt upgrade -y`
 puts command
-puts "Press Ender to continue..."
+puts "Press Enter to continue..."
 continue = gets.chomp
 
 web_search.rb	   Makes a web search with users input
@@ -116,18 +113,17 @@ puts "Search for :"
 search_term = gets.chomp
 command = `ddgr --np "#{search_term}" `
 puts command
-puts "Press Ender to continue..."
+puts "Press Enter to continue..."
 continue = gets.chomp
 
 wget.rb            download file from internet
 #!/usr/bin/env ruby
-# requirement ddgr app for linux and internet connection active is needed.
-# this app runs Linux command: ddgr + user input and returns the output
+# requirement wget app for linux and internet connection active is needed.
+# this app runs Linux command: wget + user input and returns the output
 # this app is part of OllaOS System
-puts "Search for :"
+puts "Download Link :"
 search_term = gets.chomp
-command = `ddgr --np "#{search_term}" `
+command = `wget "#{search_term}" `
 puts command
-puts "Press Ender to continue..."
+puts "Press Enter to continue..."
 continue = gets.chomp
-
