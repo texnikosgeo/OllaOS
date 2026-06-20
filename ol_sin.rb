@@ -85,6 +85,40 @@ get '/ol_pull' do
   end
 end
 
+# === Route for ol_rm.rb ===
+get '/ol_rm' do
+  model_name = params['model']
+  content_type :html
+  if model_name
+    result = `ollama rm #{model_name} 2>&1`
+    <<-HTML
+      <!DOCTYPE html>
+      <html>
+      <head><title>OllaOS - Remove Model</title>#{STYLE}</head>
+      <body>
+        <h1>Model Removed</h1>
+        <pre>#{result}</pre>
+        <a href="/" class="btn">Back</a>
+      </body>
+      </html>
+    HTML
+  else
+    <<-HTML
+      <!DOCTYPE html>
+      <html>
+      <head><title>OllaOS - Remove Model</title>#{STYLE}</head>
+      <body>
+        <h1>Remove Ollama Model</h1>
+        <form method="get" action="/ol_rm">
+          <label>Model name: <input type="text" name="model" /></label>
+          <input type="submit" value="Remove" />
+        </form>
+      </body>
+      </html>
+    HTML
+  end
+end
+
 # === Chat interface ===
 get '/ol_run' do
   uri = URI("#{OLLAMA_HOST}/api/tags")
@@ -161,13 +195,13 @@ get '/ol_run' do
               body: JSON.stringify({ model: model.value, messages: messages })
             });
             const data = await res.json();
-            const reply = data.message?.content || 'Error: ' + (data.error || 'No response');
+            const reply = data.message?.content || data.error || 'No response from model';
             messages.push({ role: 'assistant', content: reply });
             load.remove();
             addMsg('assistant', reply);
           } catch(e) {
             load.remove();
-            addMsg('assistant', 'Connection error: ' + e.message);
+            addMsg('assistant', 'Error: ' + e.message + '. Make sure Ollama is running (ollama serve).');
           }
         }
 
@@ -182,16 +216,31 @@ end
 
 post '/api/chat' do
   content_type :json
-  body = JSON.parse(request.body.read)
+  begin
+    body = JSON.parse(request.body.read)
+  rescue JSON::ParserError
+    halt 400, { error: 'Invalid JSON request body' }.to_json
+  end
 
   uri = URI("#{OLLAMA_HOST}/api/chat")
   http = Net::HTTP.new(uri.host, uri.port)
+  http.open_timeout = 60
+  http.read_timeout = 1300
   req = Net::HTTP::Post.new(uri)
   req['Content-Type'] = 'application/json'
   req.body = { model: body['model'], messages: body['messages'], stream: false }.to_json
 
-  res = http.request(req)
-  res.body
+  begin
+    res = http.request(req)
+    content_type :json
+    res.body
+  rescue Errno::ECONNREFUSED
+    { error: "Cannot connect to Ollama at #{OLLAMA_HOST}. Is Ollama running?" }.to_json
+  rescue Net::OpenTimeout, Net::ReadTimeout
+    { error: 'Ollama request timed out. The model may still be loading.' }.to_json
+  rescue => e
+    { error: "Ollama error: #{e.message}" }.to_json
+  end
 end
 
 # === Route for ls.rb ===
@@ -379,6 +428,7 @@ get '/' do
         <a href="/fastfetch" class="btn">fastfetch (System Info)</a>
         <a href="/ol_list" class="btn">Ollama Models</a>
         <a href="/ol_pull" class="btn">Pull Ollama Model</a>
+        <a href="/ol_rm" class="btn">Remove Ollama Model</a>
         <a href="/ol_run" class="btn">Chat with Ollama</a>
         <a href="/web_search" class="btn">Web Search</a>
         <a href="/wget" class="btn">Download File</a>
