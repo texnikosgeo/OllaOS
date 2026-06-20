@@ -24,7 +24,7 @@ for local LLM inference and provides extensive tooling via Ruby scripts.
 
 ---
 
-## Instaletion
+## Installation
 
 - clone the repo.
 - cd in.
