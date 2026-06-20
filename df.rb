@@ -4,5 +4,5 @@
 # this app is part of OllaOS System
 command = "df -h"
 puts system(command)
-puts "Press Ender to continue..."
+puts "Press Enter to continue..."
 continue = gets.chomp
