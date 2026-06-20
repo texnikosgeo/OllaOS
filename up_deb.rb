@@ -3,5 +3,5 @@
 # this app is part of OllaOS System
 command = `sudo apt update && sudo apt upgrade -y`
 puts command
-puts "Press Ender to continue..."
+puts "Press Enter to continue..."
 continue = gets.chomp
