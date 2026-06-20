@@ -4,5 +4,5 @@
 # this app is part of OllaOS System
 command = "ollama list"
 puts system(command)
-puts "Press Etder to continue..."
+puts "Press Enter to continue..."
 continue = gets.chomp
