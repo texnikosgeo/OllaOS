@@ -26,12 +26,30 @@ for local LLM inference and provides extensive tooling via Ruby scripts.
 
 ## Installation
 
-- clone the repo.
-- cd in.
-- ruby ol_sin.rb
-- start testing.
+clone the repo.
+cd in.
+start testing.
 
 ---
 
 # Requirements  
-Debian System, ruby, fastfetch, geany, ollama, ddgr,wget and adding !
+Debian System, ruby, fastfetch, geany, ollama, ddgr, wget and adding !
+
+## Scripts
+
+| Script | Description |
+|--------|-------------|
+| df.rb | Show disk usage |
+| fastfetch.rb | Show system info |
+| geany.rb | Launch Geany editor |
+| ls.rb | List directory contents |
+| ol_list.rb | List Ollama models |
+| ol_pull.rb | Pull an Ollama model |
+| ol_rm.rb | Remove an Ollama model |
+| ol_run.rb | Run an Ollama model |
+| pwd.rb | Show current directory |
+| top.rb | Show system processes |
+| up_deb.rb | Update Debian system |
+| web_search.rb | Web search via ddgr |
+| wget.rb | Download a file |
+| ol_sin.rb | Sinatra web interface for all tools |
